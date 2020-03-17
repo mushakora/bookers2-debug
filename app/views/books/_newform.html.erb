@@ -1,4 +1,5 @@
 <%= form_for(book, url: books_path) do |f| %>
+<%= render 'layouts/error_messages', model: f.object %>
 	<div class="field row">
 		<%= f.label :title %>
 		<%= f.text_field :title, class: "col-xs-12 book_title" %>
