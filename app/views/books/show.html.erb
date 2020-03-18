@@ -47,14 +47,28 @@
 				</tr>
 			</table>
 	    <% @book.book_comments.each do |book_comment| %>
-	    <%= book_comment.comment %>
+	      <%= book_comment.comment %>
+	      <% if book_comment.user == current_user %>
+	        <%= link_to "削除", book_book_comments_path(@book.id, comment_id: book_comment.id), method: :delete %>
+	      <% end %>
 	    <% end %>
 
-	    <%= form_for(@book_comment, url: book_path) do |f| %>
-	    <%= render 'layouts/error_messages', model: f.object %>
+	    <% if @book_comment.errors.any? %>
+		  <div class="alert alert-warning">
+		    <ul>
+		      <% @book_comment.errors.full_messages.each do |message| %>
+		        <li><%= message %></li>
+		        <a>error</a>
+		      <% end %>
+		    </ul>
+		  </div>
+		<% end %>
+
+	    <%= form_for [@book, @book_comment], url: book_book_comments_path(@book) do |f| %>
+	    <%#= render 'layouts/error_messages', locals: { object: @comment } %>
 	    <div class="row">
 	    	<div class="col-xs-12">
-	    		<%= f.text_area :comment, rows:'10' %>
+	    		<%= f.text_area :comment, class: "col-xs-12", rows:'5' %>
 	    	</div>
 	    </div>
 	    <%= f.submit "送信"  %>
