@@ -12,11 +12,11 @@
 		</tr>
 		<tr>
 			<th>follows</th>
-			<th><%= user.followings.count %></th>
+			<th><%= link_to user.followings.count, follows_user_path(user.id) %></th>
 		</tr>
 		<tr>
 			<th>followers</th>
-			<th><%= user.followers.count %></th>
+			<th><%= link_to user.followers.count, followers_user_path(user.id) %></th>
 		</tr>
 </table>
 
@@ -28,4 +28,4 @@
 	<% end %>
 </div>
 
-<%= render 'relationships/follow', user: @user %>
+<%= render 'relationships/follow', user: user %>
