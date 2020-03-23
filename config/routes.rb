@@ -2,11 +2,12 @@ Rails.application.routes.draw do
   devise_for :users
   root 'home#top'
   get 'home/about'
+  get 'search' => 'search#search'
   resources :users,　except: [:new, :destroy] do
   	member do
   		get :follows
   		get :followers
-  	end
+    end
 
   end
   resources :books, except: [:new] do

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, except: [:top, :about]
-  before_action :baria_user, only: [:edit, :update, :follows, :followers]
+  before_action :baria_user, only: [:edit, :update, :follows, :followers, :show, :search]
 
   def show
   	@user = User.find(params[:id])

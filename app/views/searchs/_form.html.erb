@@ -1,0 +1,33 @@
+<form class="form-inline">
+ <div class="col-md-6 col-md-offset-3">
+
+<%= form_with model: @user, url: search_path, method: :get, local: true do |f| %>
+  <%= f.text_field :name %>
+
+
+  <select class="form-control">
+    <option>User</option>
+    <option>Book</option>
+  </select>
+  <select class="form-control">
+    <option>完全一致</option>
+    <option>前方一致</option>
+    <option>後方一致</option>
+    <option>部分一致</option>
+  </select>
+  <%= f.submit "検索" %>
+<% end %>
+
+<%= form_with url: search_path, method: :get, local: true do |f| %>
+  <%= f.text_field :name %>
+
+ <%= form_tag(search_path, method: "get") do %>
+ <%= select_tag "", options_for_select(["User","Book"]) %>
+ <% end %>
+ <%= form_tag(search_path, method: "get") do %>
+ <%= select_tag "", options_for_select(["完全一致","前方一致","後方一致","部分一致"]) %>
+ <% end %>
+  <%= f.submit "検索" %>
+ <% end %>
+ </div>
+</form>

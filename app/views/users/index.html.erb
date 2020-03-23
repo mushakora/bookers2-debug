@@ -1,7 +1,10 @@
+
+
 <div class="container">
   <p id="notice"></p>
   <div class="row">
   <div class="col-xs-3">
+
 
 
 
@@ -13,6 +16,9 @@
 <%= render 'books/newform', book: @book %>
 
   </div>
+
+<%= render 'searchs/form' %>
+
 <h2>Users</h2>
 <!--users一覧 -->
 <div class="col-xs-9">
@@ -30,6 +36,7 @@
 
 	<tbody>
 		<% @users.each do |user| %>
+
 		<tr>
 			<td><%= attachment_image_tag(user, :profile_image, :fill, 50, 50, fallback: "no-image-mini.jpg") %></td>
 			<td><%= user.name%></td>
@@ -37,8 +44,10 @@
             <td><%= "フォロワー数 : #{user.followers.count}" %></td>
             <td><%= render'relationships/follow', user: user %></td>
 			<td><%= link_to "Show", user_path(user.id) %></td>
+
 		</tr>
 		<% end %>
+
 	</tbody>
 </table>
 </div>
