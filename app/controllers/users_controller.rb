@@ -38,6 +38,15 @@ class UsersController < ApplicationController
       render "followers"
   end
 
+  def search
+      @user = User.find(params[:id])
+      User.joins(:books)
+      if params[:name].present?
+         @users = User.joins(:books).where('name LIKE ?', "%#{params[:name]}%")
+      else
+         @users = User.none
+      end
+  end
 
   private
   def user_params

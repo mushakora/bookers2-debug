@@ -2,10 +2,10 @@
   <p id="notice"></p>
   <div class="row">
 
-<p>User search for</p>
+<h2>Users search for</h2>
 
 
-    <div class="col-xs-9">
+
       <table class="table table-striped">
 	    <thead>
 		  <tr>
@@ -16,7 +16,7 @@
 	    </thead>
 
 	    <body>
-	  	<% @user.each do |user| %>
+	  	<% @users.each do |user| %>
 	  	  <tr>
 	  	    <td><%= attachment_image_tag(user, :profile_image, :fill, 50, 50, fallback: "no-image-mini.jpg") %></td>
 	  	    <td><%= user.name %></td>
