@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, except: [:top, :about]
-  before_action :baria_user, only: [:edit, :update, :follows, :followers, :show, :search]
+  before_action :baria_user, only: [:edit, :update, :follows, :followers]
 
   def show
   	@user = User.find(params[:id])
@@ -36,16 +36,6 @@ class UsersController < ApplicationController
   def followers
       @followers = current_user.followers
       render "followers"
-  end
-
-  def search
-      @user = User.find(params[:id])
-      User.joins(:books)
-      if params[:name].present?
-         @users = User.joins(:books).where('name LIKE ?', "%#{params[:name]}%")
-      else
-         @users = User.none
-      end
   end
 
   private
