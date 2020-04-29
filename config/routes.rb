@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   		get :follows
   		get :followers
     end
-
   end
   resources :books, except: [:new] do
   	resource :favorites, only: [:create, :destroy]
