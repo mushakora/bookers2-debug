@@ -20,53 +20,27 @@
 		<table class="table table-striped">
 				<tr>
 					<td>
-						<%= attachment_image_tag(@user, :profile_image, :fill, 100, 100, fallback: "no-image-mini.jpg") %><br>
+						<%#= attachment_image_tag(@user, :profile_image, :fill, 100, 100, fallback: "no-image-mini.jpg") %><br>
 						<%=link_to @book.user.name, user_path(@book.user.id) %>
 					</td>
 					<td><%= @book.title %></td>
 					<td><%= @book.body %></td>
 					<td><% if @book.user == current_user %>
-						<%= link_to "Edit",edit_book_path(@book.id), class: "btn-sm btn-success" %></td>
-					<td><%= link_to "Destroy", book_path(@book.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger" %></td>
-					<% if @book.favorited_by?(current_user) %>
-					<td>
-						<%= link_to book_favorites_path(@book), method: :delete do %>
-						<i class="fa fa-heart" aria-hidden="true"></i>
-						<%= @book.favorites.count %>
-						<% end %>
+						<%= link_to "Edit",edit_book_path(@book.id), class: "btn-sm btn-success" %>
+					    <%= link_to "Destroy", book_path(@book.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger" %>
+                        <% end %>
 					</td>
-					<% else %>
-					<td>
-						<%= link_to book_favorites_path(@book), method: :post do %>
-						<i class="fa fa-heart-o" aria-hidden="true"></i>
-						<%= @book.favorites.count %>
-						<% end %>
+					<td><a class="book_<%= @book.id %>">
+						<%= render 'books/book', book: @book %></a>
 					</td>
-					<% end %>
 					<td><a>コメント数：<%= @book.book_comments.count %></a>
 					</td>
-					<% end %>
 				</tr>
 			</table>
-	    <% @book.book_comments.each do |book_comment| %>
-	      <%= book_comment.comment %>
-	      <% if book_comment.user == current_user %>
-	        <%= link_to "削除", book_book_comments_path(@book.id, comment_id: book_comment.id), method: :delete %>
-	      <% end %>
-	    <% end %>
-
-	    <% if @book_comment.errors.any? %>
-		  <div class="alert alert-warning">
-		    <ul>
-		      <% @book_comment.errors.full_messages.each do |message| %>
-		        <li><%= message %></li>
-		        <a>error</a>
-		      <% end %>
-		    </ul>
-		  </div>
-		<% end %>
-
-	    <%= form_for [@book, @book_comment], url: book_book_comments_path(@book) do |f| %>
+			<p class="comment_<%= @book.id %>">
+	        <%= render 'books/comment', book_comments: @book_comments %>
+	        </p>
+	        <%= form_for [@book, @book_comment], data: {remote: true} do |f| %>
 	    <%#= render 'layouts/error_messages', locals: { object: @comment } %>
 	    <div class="row">
 	    	<div class="col-xs-12">

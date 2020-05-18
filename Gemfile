@@ -74,6 +74,7 @@ gem "refile-mini_magick"
 gem 'bootstrap-sass'
 gem 'sass-rails'
 gem 'jquery-rails'
+gem 'jp_prefecture'
 
 gem 'dotenv-rails'
 
