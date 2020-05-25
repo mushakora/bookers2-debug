@@ -7,6 +7,8 @@ class User < ApplicationRecord
   #バリデーションは該当するモデルに設定する。エラーにする条件を設定できる。
   validates :name, presence: true, length: { in: 2..20}
   validates :introduction, length: { maximum: 50 }
+  #validates :postcode, presence: true
+  #validates :prefecture_code, presence: true
   has_many :books, dependent: :destroy
   attachment :profile_image
   has_many :book_comments, dependent: :destroy
@@ -59,5 +61,5 @@ class User < ApplicationRecord
   def prefecture_name=(prefecture_name)
       self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
   end
-  
+
 end
