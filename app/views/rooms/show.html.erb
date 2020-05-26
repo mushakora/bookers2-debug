@@ -1,16 +1,23 @@
-<h1><%= @room.name %></h1>
+<div class="container">
+  <div class="row">
+  	<div class="col-xs-10 col-xs-offset-1">
 
-<h4>参加者</h4>
-<% @entries.each do |e| %>
-  <%= link_to e.user.name, user_path(e.user_id) %>
-<% end %>
+	  <h1><%= @room.name %></h1>
 
-<h1>Chat room</h1>
-<form>
-  <label>Say something:</label></br>
-  <input type="text" id="chat-input" data-behavior="room_speaker">
-</form>
+		<h4>参加者</h4>
+		<% @entries.each do |e| %>
+		  <%= link_to e.user.name, user_path(e.user_id) %>
+		<% end %>
 
-<div id="direct_messages" data-room_id="<%= @room.id %>">
-  <%= render @direct_messages %>
+		<h1>チャット</h1>
+		<form>
+		  <label>コメント:</label></br>
+		  <input type="text" id="chat-input" data-behavior="room_speaker">
+		</form>
+
+		<div id="direct_messages" data-room_id="<%= @room.id %>">
+		  <%= render @direct_messages %>
+		</div>
+	</div>
+  </div>
 </div>
