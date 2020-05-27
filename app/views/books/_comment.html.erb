@@ -1,5 +1,5 @@
 <% book_comments.each do |book_comment| %>
-	<%= book_comment.comment %>
+	<%= book_comment.comment %></br>
 	<% if book_comment.user == current_user %>
 	<%= link_to "削除", book_book_comments_path( book_comment), method: :delete, remote: true %>
 	<% end %>
