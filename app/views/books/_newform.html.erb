@@ -10,6 +10,14 @@
 		<%= f.text_area :body,required: true, class: "col-xs-12 book_body" %>
 	</div>
 
+	<div class="field row">
+		<%= f.label :date %></br> <!-- ここを変更 -->
+		<!-- カレンダータイプの日付入力フォーム -->
+		<%= f.date_field :date, value: Time.now.strftime("%Y-%m-%d") %>
+		<!-- ドロップダウンタイプの日付入力フォーム -->
+		<%#= f.datetime_select :date, {}, class: 'form-control form-control-inline' %>
+	</div>
+
 	<div class="actions row">
 		<%= f.submit "Create Book", class: "btn btn-primary col-xs-12" %>
 	</div>
