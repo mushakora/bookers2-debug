@@ -51,8 +51,58 @@
 			</tbody>
 		</table>
 
-		<!--books一覧 -->
+		<!--ranking一覧 -->
+		<h3>Favorite ranking</h3>
+        <table class="table">
+			<thead>
+				<tr>
+					<th>title</th>
+					<th>opinion</th>
+					<th>name</th>
+					<th>favorite count</th>
+				</tr>
+			</thead>
 
+			<tbody>
+				<% @book_ranking.each do |book2| %>
+				<tr>
+					<td><h3><%= link_to book2.title, book_path(book2.id) %></h3></td>
+					<td><%= book2.body %></td>
+					<td><!-- 画像をリンクにする場合はpathの後ろにdoをつけてendのコメントアウトを解除 -->
+						<%= link_to book2.user.name, user_path(book2.user.id) %>
+						<%#= attachment_image_tag book2.user, :profile_image, :fill, 50, 50, fallback: "no-image-mini.jpg" %>
+						<%# end %>
+					</td>
+					<td><p style="font-size: 30px; color: red;"><%= book2.favorites.count %></p>
+				    </td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+		<!--rankingを個別に表示 -->
+		<h2>Favorite ranking</h2>
+		<table class="table">
+		<tr>
+        <th style="font-size: 35px; text-align: center;">1st</th>
+		<th style="font-size: 35px; text-align: center;"><%= link_to @book_ranking.first.title, book_path(@book_ranking.first.id) %></th>
+		<th style="font-size: 35px; text-align: center;"><%= @book_ranking.first.user.name %></th>
+		<th style="font-size: 35px; text-align: center;"><%= @book_ranking.first.favorites.count %></th>
+	    </tr>
+
+	    <tr>
+		<th style="font-size: 25px; text-align: center;">2nd</th>
+		<th style="font-size: 25px; text-align: center;"><%= @book_ranking.second.title %></th>
+		<th style="font-size: 25px; text-align: center;"><%= @book_ranking.second.user.name %></th>
+		<th style="font-size: 25px; text-align: center;"><%= @book_ranking.second.favorites.count %></th>
+	    </tr>
+
+	    <tr>
+		<th style="font-size: 20px; text-align: center;">3rd</th>
+		<th style="font-size: 20px; text-align: center;"><%= @book_ranking.third.title %></th>
+		<th style="font-size: 20px; text-align: center;"><%= @book_ranking.third.user.name %></th>
+		<th style="font-size: 20px; text-align: center;"><%= @book_ranking.third.favorites.count %></th>
+	    </tr>
+	    </table>
         </div>
 	    </div>
 </div>
