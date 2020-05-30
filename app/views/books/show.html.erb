@@ -51,6 +51,9 @@
 	    </div>
 	    <%= f.submit "送信"  %>
 	    <% end %>
+        <% if @book.date.month == Time.current.month %>
+        <h1>created by this month</h1>
+        <% end %>
 
 	</div>
 </div>
