@@ -16,15 +16,16 @@
 		<%#= f.date_field :date, value: Time.now.strftime("%Y-%m-%d") %>
 		<!-- ドロップダウンタイプの日付入力フォーム -->
 		<%#= f.date_select :date, discard_year: true, use_month_numbers: true, date_separator: '月', prompt: "--" %>
-		<%== sprintf( 
+		<%== sprintf(
 		      f.date_select(
 		        :date,
-		          {:use_month_numbers => true, 
+		          {:discard_year => true,
+		          :use_month_numbers => true,
 		          :date_separator => '%s',
 		          :time_separator =>'時',
 		          :datetime_separator =>'日'},
 		          :onchange => "generateDay(this)"
-		        ), '年 ', '月'
+		        ), '月'
 		      )
 		    %>日
 	</div>

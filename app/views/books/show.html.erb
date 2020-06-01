@@ -19,6 +19,7 @@
 
         <div class="col-xs-9">
         <h2>Book detail</h2>
+        
 		<table class="table table-striped">
 				<tr>
 					<td>
@@ -32,21 +33,21 @@
 					    <%= link_to "Destroy", book_path(@book.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger" %>
                         <% end %>
 					</td>
-					<td><a class="book_<%= @book.id %>">
-						<%= render 'books/book', book: @book %></a>
+					<td id="book_<%= @book.id %>">
+						<%= render 'books/book', book: @book %>
 					</td>
 					<td><a>コメント数：<%= @book.book_comments.count %></a>
 					</td>
 				</tr>
 			</table>
-			<p class="comment_<%= @book.id %>">
+			<p id="comment_<%= @book.id %>">
 	        <%= render 'books/comment', book_comments: @book_comments %>
 	        </p>
 	        <%= form_for [@book, @book_comment], data: {remote: true} do |f| %>
 	    <%#= render 'layouts/error_messages', locals: { object: @comment } %>
 	    <div class="row">
 	    	<div class="col-xs-12">
-	    		<%= f.text_area :comment, class: "col-xs-12", rows:'5' %>
+	    		<%= f.text_area :comment, required:true, class: "col-xs-12", rows:'5' %>
 	    	</div>
 	    </div>
 	    <%= f.submit "送信"  %>

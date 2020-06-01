@@ -3,9 +3,7 @@ class BookCommentsController < ApplicationController
 		@book = Book.find(params[:book_id])
 		@book_comment = current_user.book_comments.new(book_comment_params)
 		@book_comment.book_id = @book.id
-		if @book_comment.save
-		redirect_back(fallback_location: root_path)
-	    else
+		unless @book_comment.save
 	    @user = @book.user
 	    @a = Book.new
 	    # @book_comment = BookComment.new
@@ -15,8 +13,8 @@ class BookCommentsController < ApplicationController
 
 	def destroy
 		@book_comment = BookComment.find(params[:book_id])
+        @book = @book_comment.book
 		@book_comment.destroy
-		redirect_back(fallback_location: root_path)
 	end
 
 	private

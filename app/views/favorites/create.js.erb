@@ -1,4 +1,1 @@
-
-  $("textarea").val("");
-  $(".book_<%= @book.id %>").html("<%= j(render 'books/book',  book: @book ) %>");
-  $(".comment_<%= @book.id %>").html("<%= j(render 'books/comment', book_comments: @book.book_comments ) %>");
+$("#book_<%= @book.id %>").html("<%= j(render 'books/book',book: @book ) %>");
