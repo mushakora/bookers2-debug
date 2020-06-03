@@ -78,6 +78,9 @@ gem 'jp_prefecture'
 
 gem 'dotenv-rails'
 
+gem 'ruby-debug-ide'
+gem 'debase'
+
 group :production do
   gem 'mysql2'
 end
