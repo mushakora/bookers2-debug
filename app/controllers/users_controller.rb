@@ -30,8 +30,7 @@ class UsersController < ApplicationController
   	@users = User.all #一覧表示するためにUserモデルのデータを全て変数に入れて取り出す。
     @followers = current_user.followers
     @book = Book.new #new bookの新規投稿で必要（保存処理はbookコントローラー側で実施）
-    @book_ranking = Book.find(Favorite.group(:book_id).order('count(book_id) desc').limit(3).pluck(:book_id))
-  end
+    end
 
   def edit
   	@user = User.find(params[:id])
