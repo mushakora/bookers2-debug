@@ -3,25 +3,40 @@
 <strong>Bookers</strong>  !!</h1>
 </div>
 
-<h3>世界の天気</h3>
+  <div class="col-xs-6 col-xs-offset-4">
+    <h2>世界の天気</h2>
       <label>都市名：</label>
         <input id="cityname" type="text" size="14" maxlength="14" placeholder="Tokyo">
-        <button id="btn">検索</button><br>
-       <span>場所 :</span>
-       <span id="place"></span><br>
-       <span>最高気温 :</span>
-       <span id="temp_max"></span>
-       <span> ℃</span><br>
-       <span>最低気温 :</span>
-       <span id="temp_min"></span>
-       <span> ℃</span><br>
-       <span>湿度 :</span>
-       <span id="humidity"></span>
-       <span> %</span><br>
-       <span>風速 :</span>
-       <span id="speed"></span>
-       <span> m/s</span><br>
-       <span>天気 :</span>
-       <span id="weather"></span>
-       <div id="icon"><img id="img"></div>
-         <script src="weather.js"></script>
+        <button id="btn">検索</button>
+      <table class="table">
+        <tr>
+          <th>場所 :</th>
+          <th id="place"></th><br>
+        </tr>
+        <tr>
+          <th>最高気温 :</th>
+          <th id="temp_max"></th>
+          <th> ℃</th><br>
+        </tr>
+        <tr>
+          <th>最低気温 :</th>
+          <th id="temp_min"></th>
+          <th> ℃</th><br>
+        </tr>
+        <tr>
+          <th>湿度 :</th>
+          <th id="humidity"></th>
+          <th> %</th><br>
+        </tr>
+        <tr>
+          <th>風速 :</th>
+          <th id="speed"></th>
+          <th> m/s</th><br>
+        </tr>
+        <tr>
+          <th>天気 :</th>
+          <th><span id="weather"></span></th>
+          <th><div id="icon"><img id="img"></div></th>
+        </tr>
+      </table>
+  </div>
