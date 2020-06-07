@@ -6,3 +6,13 @@ $(function() {
       return false;
   });
 });
+
+$(function(){
+  $('#back a').mouseover(function(){
+      $('#back a').addClass('back-btn');
+  });
+
+  $('#back a').mouseout(function(){
+      $('#back a').removeClass('back-btn');
+  });
+});
