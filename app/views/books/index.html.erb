@@ -5,6 +5,8 @@
       	<% if flash[:notice] %>
          <p><%= flash[:notice] %></p>
         <% end %>
+
+		
 		<h2>User info</h2>
 		<%= render 'users/profile', user: current_user %>
 		<!--メモ　右側の指定に注意。そこを間違えるとエラーが発生して表示されない -->

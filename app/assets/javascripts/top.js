@@ -16,3 +16,13 @@ $(function(){
       $('#back a').removeClass('back-btn');
   });
 });
+
+$(function() {
+ 
+  $('.menu-trigger').on('click', function() {
+    $(this).toggleClass('active');
+    $('#sp-menu').fadeToggle();
+    return false;
+  });
+ 
+ });
