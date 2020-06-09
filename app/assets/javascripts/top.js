@@ -1,9 +1,9 @@
 $(function() {
-  $('#back a').on('click',function(){
-    $('body, html').animate({
-      scrollTop:0
-    }, 500);
-      return false;
+$('#back a').on('click',function(){
+  $('body, html').animate({
+    scrollTop:0
+  }, 500);
+  return false;
   });
 });
 
@@ -24,5 +24,4 @@ $(function() {
     $('#sp-menu').fadeToggle();
     return false;
   });
- 
  });
